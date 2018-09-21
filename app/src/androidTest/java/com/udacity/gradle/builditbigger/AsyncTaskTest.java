@@ -30,19 +30,17 @@ public class AsyncTaskTest {
     public void testAsync() throws Throwable {
 
         try {
-            String joke = null;
+
             JokeAsyncTask jokeAsyncTask = new JokeAsyncTask(new JokeAsyncTask.AsyncResponse() {
                 @Override
                 public void processFinish(String output) {
-
                 }
             });
             jokeAsyncTask.execute();
-            joke = jokeAsyncTask.get(30, TimeUnit.SECONDS);
-            Log.i("TEST",joke);
-            Assert.assertNotNull(joke);
+            String joke = jokeAsyncTask.get(30, TimeUnit.SECONDS);
+            Log.i("TEST", joke);
         } catch (Exception e){
-            fail("Test Failed");
+            fail(null);
         }
     }
 
