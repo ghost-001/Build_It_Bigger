@@ -37,7 +37,7 @@ public class AsyncTaskTest {
 
                 }
             });
-            jokeAsyncTask.execute(new Pair<Context, String>(context, "Manfred"));
+            jokeAsyncTask.execute();
             joke = jokeAsyncTask.get(30, TimeUnit.SECONDS);
             Log.i("TEST",joke);
             Assert.assertNotNull(joke);
