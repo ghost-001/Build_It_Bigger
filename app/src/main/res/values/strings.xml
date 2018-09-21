@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Build it Bigger</string>
+    <string name="instructions">Press the button for a delicious joke!</string>
+    <string name="button_text">Tell Me a Joke</string>
+    <string name="action_settings">Settings</string>
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="welcome_to_free_version_of_app">Welcome to Free Version of App</string>
+    <string name="welcome_to_paid_version_of_app">Welcome to Paid Version of App</string>
+</resources>
