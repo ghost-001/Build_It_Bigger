@@ -39,8 +39,9 @@ public class AsyncTaskTest {
             jokeAsyncTask.execute();
             String joke = jokeAsyncTask.get(30, TimeUnit.SECONDS);
             Log.i("TEST", joke);
+            Assert.assertNotNull(joke);
         } catch (Exception e){
-            fail(null);
+            fail("Test Failed");
         }
     }
 

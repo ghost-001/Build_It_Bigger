@@ -28,7 +28,7 @@ public class MainActivityLib extends AppCompatActivity {
     String joke;
     Boolean checkJoke = true;
     public static final String JOKE = "joke";
-    public static final String FAILED = "failed";
+    public static final String FAILED = "Failed to fetch Joke, try again";
     public static final String ERROR = "No Joke to share :(";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,13 +43,15 @@ public class MainActivityLib extends AppCompatActivity {
         Glide.with(this).load(R.drawable.smiley).into(imageView);
         Intent intent = getIntent();
         joke = intent.getStringExtra(JOKE);
-        if(joke.substring(0,6).equals(FAILED)){
+        jokeTv.setText(joke);
+        if(joke == null){
             imageView.setVisibility(GONE);
             text.setVisibility(GONE);
+            jokeTv.setText(FAILED);
             checkJoke = false;
         }
 
-        jokeTv.setText(joke);
+
     }
 
     @Override

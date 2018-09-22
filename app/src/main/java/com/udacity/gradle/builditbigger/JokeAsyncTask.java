@@ -40,7 +40,7 @@ public class JokeAsyncTask extends AsyncTask<Void, Void, String> {
 
             return myApiService.getJoke().execute().getData();
         } catch (IOException e) {
-            return e.getMessage();
+            return null;
         }
     }
 

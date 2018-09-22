@@ -75,7 +75,7 @@ public class MainActivityFragment extends Fragment {
                 if (mInterstitialAd.isLoaded()) {
                     mInterstitialAd.show();
                 }
-                getJokeFromGCE();
+
 
             }
         });
@@ -84,6 +84,7 @@ public class MainActivityFragment extends Fragment {
             public void onAdClosed() {
                 // Load the next interstitial.
                 Toast.makeText(getContext(),AD_CLOSED,Toast.LENGTH_SHORT).show();
+                getJokeFromGCE();
             }
 
         });
