@@ -41,7 +41,7 @@ public class AsyncTaskTest {
             Log.i("TEST", joke);
             Assert.assertNotNull(joke);
         } catch (Exception e){
-            fail("Test Failed" + e.getMessage());
+            fail("Test Failed : " + e.getMessage());
         }
     }
 
