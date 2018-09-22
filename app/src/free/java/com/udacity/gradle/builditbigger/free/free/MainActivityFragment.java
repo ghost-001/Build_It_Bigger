@@ -74,6 +74,8 @@ public class MainActivityFragment extends Fragment {
                 mProgressBar.setVisibility(View.VISIBLE);
                 if (mInterstitialAd.isLoaded()) {
                     mInterstitialAd.show();
+                }else{
+                    getJokeFromGCE();
                 }
 
 
