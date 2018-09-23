@@ -2,6 +2,7 @@ package com.example.androiddisplaylib;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -57,6 +58,9 @@ public class MainActivityLib extends AppCompatActivity {
         Glide.with(this).load(R.drawable.smiley).into(imageView);
         Intent intent = getIntent();
         joke = intent.getStringExtra(JOKE);
+
+
+        jokeTv.setTextColor(Color.WHITE);
         jokeTv.setText(joke);
         if(joke == null){
             imageView.setVisibility(GONE);

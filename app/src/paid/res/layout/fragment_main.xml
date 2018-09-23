@@ -1,11 +1,14 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/colorPrimaryDark"
-    android:padding="@dimen/layout_padding"
-    >
+    android:padding="@dimen/layout_padding">
 
     <TextView
         android:id="@+id/tv1"
@@ -31,15 +34,34 @@
         ads:layout_constraintStart_toStartOf="parent"
         ads:layout_constraintTop_toBottomOf="@+id/tv1" />
 
-    <ImageView
-        android:id="@+id/joke_welcome_image"
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_image"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/image_height"
-        android:layout_margin="@dimen/layout_margin"
-        android:padding="@dimen/layout_padding"
-        android:scaleType="fitXY"
-        ads:layout_constraintTop_toBottomOf="@+id/instructions_text_view"
-        tools:layout_editor_absoluteX="-14dp" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="40dp"
+        ads:cardCornerRadius="25dp"
+        ads:layout_constraintEnd_toEndOf="parent"
+        ads:layout_constraintStart_toStartOf="parent"
+        ads:layout_constraintTop_toBottomOf="@+id/instructions_text_view">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_cardview_round">
+
+            <ImageView
+                android:id="@+id/joke_welcome_image"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/image_height"
+                android:layout_margin="@dimen/layout_margin"
+                android:padding="@dimen/layout_padding"
+                android:scaleType="fitXY"
+                android:src="@drawable/welcome2"
+                tools:layout_editor_absoluteX="-14dp" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
 
     <Button
         android:id="@+id/joke_button"
@@ -47,13 +69,14 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_margin="@dimen/layout_margin"
+        android:layout_marginTop="8dp"
         android:background="@drawable/button_bg"
         android:padding="15dp"
         android:text="@string/button_text"
-
+        ads:layout_constraintBottom_toTopOf="@+id/joke_progress"
         ads:layout_constraintEnd_toEndOf="parent"
         ads:layout_constraintStart_toStartOf="parent"
-        ads:layout_constraintTop_toBottomOf="@+id/joke_welcome_image" />
+        ads:layout_constraintTop_toBottomOf="@+id/card_image" />
 
 
     <ProgressBar
@@ -62,10 +85,12 @@
         android:layout_height="61dp"
         android:layout_below="@id/joke_button"
         android:layout_margin="@dimen/layout_margin"
+        android:layout_marginTop="8dp"
         android:visibility="gone"
         ads:layout_constraintBottom_toBottomOf="parent"
         ads:layout_constraintEnd_toEndOf="parent"
         ads:layout_constraintHorizontal_bias="0.501"
         ads:layout_constraintStart_toStartOf="parent"
-        ads:layout_constraintTop_toBottomOf="@+id/joke_button" />
+        ads:layout_constraintTop_toBottomOf="@+id/card_image" />
 </android.support.constraint.ConstraintLayout>
+</ScrollView>

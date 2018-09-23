@@ -3,6 +3,7 @@ package com.udacity.gradle.builditbigger;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 import com.udacity.gradle.builditbigger.colorDialog.colorDialog;
 
 import static com.udacity.gradle.builditbigger.appConstant.AppConstants.BLUE;
+import static com.udacity.gradle.builditbigger.appConstant.AppConstants.FIRST_LAUNCH;
 import static com.udacity.gradle.builditbigger.appConstant.AppConstants.PREFERENCEKEY;
 import static com.udacity.gradle.builditbigger.appConstant.AppConstants.PURPLE;
 import static com.udacity.gradle.builditbigger.appConstant.AppConstants.YELLOW;
@@ -19,6 +21,7 @@ import static com.udacity.gradle.builditbigger.appConstant.AppConstants.YELLOW;
 public class MainActivity extends AppCompatActivity implements colorDialog.OnFragmentInteractionListener {
 
     String currentColor;
+    Boolean isFirstLaunch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +48,26 @@ public class MainActivity extends AppCompatActivity implements colorDialog.OnFra
             }
 
         }
+
         setContentView(R.layout.activity_main);
+        final SharedPreferences sharedPreference = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        isFirstLaunch = sharedPreference.getBoolean(FIRST_LAUNCH, true);
+        if (isFirstLaunch) {
+            Thread t = new Thread(new Runnable() {
+                @Override
+                public void run() {
+
+                    Intent intent = new Intent(MainActivity.this, IntroActivity.class);
+                    startActivity(intent);
+                    SharedPreferences.Editor e = sharedPreference.edit();
+                    e.putBoolean(FIRST_LAUNCH, false);
+                    e.apply();
+                }
+
+            });
+
+            t.start();
+        }
 
     }
 

@@ -10,7 +10,7 @@
 
     <style name="CustomYellowAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">#c7cc00</item>
-        <item name="colorAccent">#ffff5a</item>
+        <item name="colorAccent">#ffff6b</item>
         <item name="colorPrimaryDark">#929b00</item>
     </style>
 
