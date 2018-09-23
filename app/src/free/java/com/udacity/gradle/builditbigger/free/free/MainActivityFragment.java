@@ -44,6 +44,7 @@ public class MainActivityFragment extends Fragment {
     ProgressBar mProgressBar;
     @BindView(R.id.joke_welcome_image)
     ImageView welcomeImage;
+
     private InterstitialAd mInterstitialAd;
 
     public MainActivityFragment() {
@@ -55,8 +56,8 @@ public class MainActivityFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_main, container, false);
         ButterKnife.bind(this, root);
 
-        mInterstitialAd = new InterstitialAd(getContext());
 
+        mInterstitialAd = new InterstitialAd(getContext());
         mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
 

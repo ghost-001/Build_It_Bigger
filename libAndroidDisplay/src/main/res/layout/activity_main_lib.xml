@@ -5,20 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivityLib"
-    android:background="#c7cc00">
+    android:background="?attr/colorPrimaryDark">
 
-    <TextView
-        android:id="@+id/lib_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-       android:layout_margin="@dimen/layout_margin"
-        android:text="@string/javascript_be_like_34"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/lib_image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <ImageView
         android:id="@+id/lib_image"
@@ -46,7 +34,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:background="#ffff5a">
+            android:background="?attr/colorAccent">
 
             <TextView
                 android:id="@+id/lib_joke_text"

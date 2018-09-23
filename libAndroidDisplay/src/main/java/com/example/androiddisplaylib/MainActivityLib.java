@@ -1,10 +1,10 @@
 package com.example.androiddisplaylib;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -14,29 +14,41 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 import static android.view.View.GONE;
+import static com.example.androiddisplaylib.libConstants.libConstants.BLUE;
+import static com.example.androiddisplaylib.libConstants.libConstants.ERROR;
+import static com.example.androiddisplaylib.libConstants.libConstants.FAILED;
+import static com.example.androiddisplaylib.libConstants.libConstants.JOKE;
+import static com.example.androiddisplaylib.libConstants.libConstants.YELLOW;
 
 public class MainActivityLib extends AppCompatActivity {
     TextView jokeTv;
     ImageView imageView;
-    TextView text;
     CardView jokeCard;
 
     String joke;
     Boolean checkJoke = true;
-    public static final String JOKE = "joke";
-    public static final String FAILED = "Failed to fetch Joke, try again";
-    public static final String ERROR = "No Joke to share :(";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences prefs = getApplicationContext().getSharedPreferences("FUCK", MODE_PRIVATE);
+        String getColor = prefs.getString("color", null);
+        if (getColor != null) {
+            String color = prefs.getString("color", YELLOW);
+            switch (color) {
+                case YELLOW:
+                    setTheme(R.style.AppTheme);
+                    break;
+                case BLUE:
+                    setTheme(R.style.CustomAppTheme);
+                    break;
+            }
+
+        }
         setContentView(R.layout.activity_main_lib);
         jokeTv = findViewById(R.id.lib_joke_text);
         imageView = findViewById(R.id.lib_image);
-        text = findViewById(R.id.lib_text);
         jokeCard = findViewById(R.id.cardView);
 
 
@@ -46,7 +58,6 @@ public class MainActivityLib extends AppCompatActivity {
         jokeTv.setText(joke);
         if(joke == null){
             imageView.setVisibility(GONE);
-            text.setVisibility(GONE);
             jokeTv.setText(FAILED);
             checkJoke = false;
         }

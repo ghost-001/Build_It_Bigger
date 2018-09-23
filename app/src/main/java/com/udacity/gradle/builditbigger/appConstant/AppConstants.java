@@ -6,4 +6,9 @@ public final class AppConstants {
     public static final String JOKE ="joke";
     public static final String OPENING =" Opening . . .";
 
+    public static final String YELLOW = "yellow";
+    public static final String BLUE = "blue";
+
+
+
 }
