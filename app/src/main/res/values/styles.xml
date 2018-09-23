@@ -2,12 +2,19 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">#6c40b9</item>
+        <item name="colorAccent">#b085f5</item>
+        <item name="colorPrimaryDark">#65499c</item>
+
+    </style>
+
+    <style name="CustomYellowAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">#c7cc00</item>
         <item name="colorAccent">#ffff5a</item>
         <item name="colorPrimaryDark">#929b00</item>
     </style>
 
-    <style name="CustomAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="CustomBlueAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">#26a69a</item>
         <item name="colorAccent">#64d8cb</item>
         <item name="colorPrimaryDark">#00766c</item>

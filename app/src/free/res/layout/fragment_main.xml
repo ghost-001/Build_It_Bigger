@@ -52,6 +52,7 @@
         android:background="@drawable/button_bg"
         android:padding="15dp"
         android:text="@string/button_text"
+        android:textColor="@android:color/white"
         ads:layout_constraintBottom_toTopOf="@+id/joke_progress"
         ads:layout_constraintEnd_toEndOf="parent"
         ads:layout_constraintStart_toStartOf="parent"

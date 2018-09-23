@@ -19,6 +19,8 @@ import static com.example.androiddisplaylib.libConstants.libConstants.BLUE;
 import static com.example.androiddisplaylib.libConstants.libConstants.ERROR;
 import static com.example.androiddisplaylib.libConstants.libConstants.FAILED;
 import static com.example.androiddisplaylib.libConstants.libConstants.JOKE;
+import static com.example.androiddisplaylib.libConstants.libConstants.PREFERENCEKEY;
+import static com.example.androiddisplaylib.libConstants.libConstants.PURPLE;
 import static com.example.androiddisplaylib.libConstants.libConstants.YELLOW;
 
 public class MainActivityLib extends AppCompatActivity {
@@ -32,18 +34,18 @@ public class MainActivityLib extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SharedPreferences prefs = getApplicationContext().getSharedPreferences("FUCK", MODE_PRIVATE);
-        String getColor = prefs.getString("color", null);
-        if (getColor != null) {
-            String color = prefs.getString("color", YELLOW);
-            switch (color) {
-                case YELLOW:
-                    setTheme(R.style.AppTheme);
-                    break;
-                case BLUE:
-                    setTheme(R.style.CustomAppTheme);
-                    break;
-            }
+        SharedPreferences prefs = getApplicationContext().getSharedPreferences(PREFERENCEKEY, MODE_PRIVATE);
+        String color = prefs.getString("color", PURPLE);
+        switch (color) {
+            case PURPLE:
+                setTheme(R.style.AppTheme);
+                break;
+            case YELLOW:
+                setTheme(R.style.CustomYellowAppTheme);
+                break;
+            case BLUE:
+                setTheme(R.style.CustomBlueAppTheme);
+                break;
 
         }
         setContentView(R.layout.activity_main_lib);

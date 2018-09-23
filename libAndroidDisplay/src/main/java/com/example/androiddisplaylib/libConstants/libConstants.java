@@ -8,4 +8,6 @@ public final class libConstants {
 
     public static final String YELLOW = "yellow";
     public static final String BLUE = "blue";
+    public static final String PURPLE = "purple";
+    public static final String PREFERENCEKEY = "jokesTheme";
 }
