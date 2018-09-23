@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="activity_backgroud_yellow">#c7cc00</color>
+    <color name="view_background_yellow">#ffff5a</color>
+
+    <color name="activity_backgroud_blue">#4db6ac</color>
+    <color name="view_background_blue">#82e9de</color>
+
+    <color name="activity_backgroud_purple">#6c40b9</color>
+    <color name="view_background_purple">#9f6dec</color>
+</resources>
