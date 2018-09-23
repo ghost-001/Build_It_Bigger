@@ -7,7 +7,7 @@ public class MyJoke {
     public String getJoke() {
         final int min = 0;
         final int max = 10;
-        final int randomIndex = new Random().nextInt((max - min) + 1) + min;
+        final int randomIndex = new Random().nextInt(max - min) + min;
 
         switch (randomIndex) {
             case 0:
@@ -35,7 +35,7 @@ public class MyJoke {
             default:
                 return "You can't just use one language for all platforms." + "\n" + "JS: that's where you're wrong kiddo";
         }
-        
+
 
     }
 }
