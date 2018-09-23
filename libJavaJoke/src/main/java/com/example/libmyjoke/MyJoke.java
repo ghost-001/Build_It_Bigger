@@ -35,8 +35,7 @@ public class MyJoke {
             default:
                 return "You can't just use one language for all platforms." + "\n" + "JS: that's where you're wrong kiddo";
         }
-        // final String JOKE_PART1 = "";
-        //final String JOKE_PART2 = "JS: that's where you're wrong kiddo :D lol";
+        
 
     }
 }
