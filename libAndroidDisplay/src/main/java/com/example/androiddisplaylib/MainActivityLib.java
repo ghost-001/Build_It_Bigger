@@ -19,6 +19,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 
 import java.util.Locale;
 
@@ -75,15 +77,35 @@ public class MainActivityLib extends AppCompatActivity {
         jokeTv.setText(joke);
         if (joke == null) {
             imageView.setVisibility(GONE);
+            joke = FAILED;
             jokeTv.setText(FAILED);
             checkJoke = false;
             jokeButton.setVisibility(GONE);
+
         }
 
         if (checkJoke) {
             setTextToSpeech();
+            jokeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    speakText();
+                }
+            });
+            handleAnimation(imageView);
         }
 
+    }
+
+    public void handleAnimation(View view) {
+        YoYo.with(Techniques.FadeIn)
+                .duration(700)
+                .repeat(1)
+                .playOn(view);
+        YoYo.with(Techniques.Bounce)
+                .duration(700)
+                .repeat(4)
+                .playOn(view);
 
     }
 
@@ -105,14 +127,9 @@ public class MainActivityLib extends AppCompatActivity {
                     }
                 }
             });
-            jokeButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    speakText();
-                }
-            });
         }
     }
+
     public void speakText() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             textToSpeech.speak(joke, TextToSpeech.QUEUE_FLUSH, null, null);

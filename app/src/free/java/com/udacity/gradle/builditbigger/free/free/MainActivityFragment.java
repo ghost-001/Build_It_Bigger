@@ -1,11 +1,9 @@
 package com.udacity.gradle.builditbigger.free.free;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +13,8 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.example.androiddisplaylib.MainActivityLib;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -26,7 +26,6 @@ import com.udacity.gradle.builditbigger.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static com.udacity.gradle.builditbigger.appConstant.AppConstants.AD_CLOSED;
 import static com.udacity.gradle.builditbigger.appConstant.AppConstants.JOKE;
 import static com.udacity.gradle.builditbigger.appConstant.AppConstants.OPENING;
 
@@ -63,6 +62,7 @@ public class MainActivityFragment extends Fragment {
 
 
         Glide.with(this).load(R.drawable.welcome1).into(welcomeImage);
+        handleAnimation(welcomeImage);
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
@@ -101,6 +101,13 @@ public class MainActivityFragment extends Fragment {
         return root;
     }
 
+    public void handleAnimation(View view) {
+        YoYo.with(Techniques.Shake)
+                .duration(1000)
+                .repeat(1)
+                .playOn(welcomeImage);
+
+    }
     public void getJokeFromGCE(){
         new JokeAsyncTask(new JokeAsyncTask.AsyncResponse() {
             @Override
