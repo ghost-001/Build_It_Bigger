@@ -1,10 +1,8 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +42,7 @@ public class MainActivityFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_main, container, false);
         ButterKnife.bind(this, root);
         Glide.with(this).load(R.drawable.welcome2).into(welcomeImage);
+        handleAnimation(welcomeImage);
 
         jokeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +59,26 @@ public class MainActivityFragment extends Fragment {
         return root;
     }
 
+    public void handleAnimation(View view) {
+
+        // ObjectAnimator animatorX = ObjectAnimator.ofFloat(welcomeImage, "x",420f);
+        //ObjectAnimator animatorY= ObjectAnimator.ofFloat(welcomeImage, "y",300f);
+        //animatorX.setDuration(1000);
+        // ObjectAnimator alphaAnimation = ObjectAnimator.ofFloat(welcomeImage, View.ALPHA,1.0f,0.0f);
+        //alphaAnimation.setDuration(1000);
+        //animatorY.setDuration(1000);
+       /* AnimatorSet animatorSet = new AnimatorSet();
+        ObjectAnimator rotationAnimation = ObjectAnimator.ofFloat(welcomeImage, "rotation",360f);
+        rotationAnimation.setDuration(1000);
+        animatorSet.playTogether(rotationAnimation);
+        animatorSet.start(); */
+      /*  RotateAnimation anim = new RotateAnimation(0f, 350f, 15f, 15f);
+        anim.setInterpolator(new LinearInterpolator());
+        anim.setRepeatCount(Animation.INFINITE);
+
+        welcomeImage.startAnimation(anim);*/
+        //  welcomeImage.setAnimation(null);
+    }
     public void getJokeFromGCE() {
         new JokeAsyncTask(new JokeAsyncTask.AsyncResponse() {
             @Override
