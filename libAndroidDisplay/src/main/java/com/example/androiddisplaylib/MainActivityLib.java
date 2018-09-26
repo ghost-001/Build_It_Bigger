@@ -81,6 +81,14 @@ public class MainActivityLib extends AppCompatActivity {
         }
 
         if (checkJoke) {
+            setTextToSpeech();
+        }
+
+
+    }
+
+    public void setTextToSpeech() {
+        if (checkJoke) {
             textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
                 @Override
                 public void onInit(int i) {
@@ -104,10 +112,7 @@ public class MainActivityLib extends AppCompatActivity {
                 }
             });
         }
-
-
     }
-
     public void speakText() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             textToSpeech.speak(joke, TextToSpeech.QUEUE_FLUSH, null, null);
@@ -139,11 +144,26 @@ public class MainActivityLib extends AppCompatActivity {
     }
 
     @Override
+    protected void onPostResume() {
+        setTextToSpeech();
+        super.onPostResume();
+    }
+
+    @Override
     protected void onDestroy() {
         if (textToSpeech != null) {
             textToSpeech.stop();
             textToSpeech.shutdown();
         }
         super.onDestroy();
+    }
+
+    @Override
+    protected void onPause() {
+        if (textToSpeech != null) {
+            textToSpeech.stop();
+            textToSpeech.shutdown();
+        }
+        super.onPause();
     }
 }

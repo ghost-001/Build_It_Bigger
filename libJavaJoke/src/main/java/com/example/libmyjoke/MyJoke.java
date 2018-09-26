@@ -11,7 +11,7 @@ public class MyJoke {
 
         switch (randomIndex) {
             case 0:
-                return "You can't just use one language for all platforms." + "\n" + "JS: that's where you're wrong kiddo :D lol";
+                return "You can't just use one language for all platforms." + "\n" + "JavaScript: that's where you're wrong kiddo";
             case 1:
                 return "Android: where ProgressBars go around in circles and Spinners do not spin";
             case 2:
@@ -33,7 +33,7 @@ public class MyJoke {
                 return "HTML is a programming language !!";
 
             default:
-                return "You can't just use one language for all platforms." + "\n" + "JS: that's where you're wrong kiddo";
+                return "You can't just use one language for all platforms." + "\n" + "JavaScript: that's where you're wrong kiddo";
         }
 
 
