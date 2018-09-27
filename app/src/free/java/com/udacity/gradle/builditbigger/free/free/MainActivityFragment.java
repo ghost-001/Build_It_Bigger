@@ -20,8 +20,8 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
-import com.udacity.gradle.builditbigger.JokeAsyncTask;
 import com.udacity.gradle.builditbigger.R;
+import com.udacity.gradle.builditbigger.aysncTask.JokeAsyncTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
