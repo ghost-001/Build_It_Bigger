@@ -10,6 +10,8 @@ public final class AppConstants {
     public static final String PURPLE = "purple";
     public static final String PREFERENCEKEY = "jokesTheme";
     public static final String FIRST_LAUNCH = "firstLaunch";
+    public static final String COLOR = "color";
+
 
 
 

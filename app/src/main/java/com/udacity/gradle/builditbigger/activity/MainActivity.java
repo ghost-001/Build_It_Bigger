@@ -12,6 +12,7 @@ import com.udacity.gradle.builditbigger.R;
 import com.udacity.gradle.builditbigger.colorDialog.colorDialog;
 
 import static com.udacity.gradle.builditbigger.appConstant.AppConstants.BLUE;
+import static com.udacity.gradle.builditbigger.appConstant.AppConstants.COLOR;
 import static com.udacity.gradle.builditbigger.appConstant.AppConstants.PREFERENCEKEY;
 import static com.udacity.gradle.builditbigger.appConstant.AppConstants.PURPLE;
 import static com.udacity.gradle.builditbigger.appConstant.AppConstants.YELLOW;
@@ -19,16 +20,17 @@ import static com.udacity.gradle.builditbigger.appConstant.AppConstants.YELLOW;
 
 public class MainActivity extends AppCompatActivity implements colorDialog.OnFragmentInteractionListener {
 
-    String currentColor;
+    private String currentColor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         SharedPreferences prefs = getApplicationContext().getSharedPreferences(PREFERENCEKEY, MODE_PRIVATE);
-        String getColor = prefs.getString("color", null);
+        String getColor = prefs.getString(COLOR, null);
         if (getColor != null) {
-            String color = prefs.getString("color", PURPLE);
+            String color = prefs.getString(COLOR, PURPLE);
             switch (color) {
                 case PURPLE:
                     currentColor = color;
@@ -46,8 +48,6 @@ public class MainActivity extends AppCompatActivity implements colorDialog.OnFra
         }
 
         setContentView(R.layout.activity_main);
-
-
     }
 
     @Override
@@ -72,46 +72,39 @@ public class MainActivity extends AppCompatActivity implements colorDialog.OnFra
 
     @Override
     public void onFragmentInteraction(String color) {
+        SharedPreferences pf = getApplicationContext().getSharedPreferences(PREFERENCEKEY, MODE_PRIVATE);
+        SharedPreferences.Editor editor;
+        Intent i = getBaseContext().getPackageManager()
+                .getLaunchIntentForPackage(getBaseContext().getPackageName());
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
         switch (color) {
             case YELLOW:
-
                 if (!color.equals(currentColor)) {
-                    SharedPreferences pf = getApplicationContext().getSharedPreferences(PREFERENCEKEY, MODE_PRIVATE);
-                    SharedPreferences.Editor editor = pf.edit();
+                    editor = pf.edit();
                     editor.clear();
-                    editor.putString("color", YELLOW);
+                    editor.putString(COLOR, YELLOW);
                     editor.apply();
-                    Intent i = getBaseContext().getPackageManager()
-                            .getLaunchIntentForPackage(getBaseContext().getPackageName());
-                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(i);
                 }
                 break;
 
             case BLUE:
                 if (!color.equals(currentColor)) {
-                    SharedPreferences pf2 = getApplicationContext().getSharedPreferences(PREFERENCEKEY, MODE_PRIVATE);
-                    SharedPreferences.Editor editor1 = pf2.edit();
-                    editor1.putString("color", BLUE);
-                    editor1.apply();
-                    Intent i2 = getBaseContext().getPackageManager()
-                            .getLaunchIntentForPackage(getBaseContext().getPackageName());
-                    i2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(i2);
-                    break;
+                    editor = pf.edit();
+                    editor.putString(COLOR, BLUE);
+                    editor.apply();
+                    startActivity(i);
                 }
+                break;
             case PURPLE:
                 if (!color.equals(currentColor)) {
-                    SharedPreferences pf3 = getApplicationContext().getSharedPreferences(PREFERENCEKEY, MODE_PRIVATE);
-                    SharedPreferences.Editor editor2 = pf3.edit();
-                    editor2.putString("color", PURPLE);
-                    editor2.apply();
-                    Intent i3 = getBaseContext().getPackageManager()
-                            .getLaunchIntentForPackage(getBaseContext().getPackageName());
-                    i3.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(i3);
-                    break;
+                    editor = pf.edit();
+                    editor.putString(COLOR, PURPLE);
+                    editor.apply();
+                    startActivity(i);
                 }
+                break;
         }
     }
 

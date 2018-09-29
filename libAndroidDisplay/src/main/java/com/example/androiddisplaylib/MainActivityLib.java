@@ -26,6 +26,7 @@ import java.util.Locale;
 
 import static android.view.View.GONE;
 import static com.example.androiddisplaylib.libConstants.libConstants.BLUE;
+import static com.example.androiddisplaylib.libConstants.libConstants.COLOR;
 import static com.example.androiddisplaylib.libConstants.libConstants.ERROR;
 import static com.example.androiddisplaylib.libConstants.libConstants.FAILED;
 import static com.example.androiddisplaylib.libConstants.libConstants.JOKE;
@@ -48,7 +49,7 @@ public class MainActivityLib extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SharedPreferences prefs = getApplicationContext().getSharedPreferences(PREFERENCEKEY, MODE_PRIVATE);
-        String color = prefs.getString("color", PURPLE);
+        String color = prefs.getString(COLOR, PURPLE);
         switch (color) {
             case PURPLE:
                 setTheme(R.style.AppTheme);
