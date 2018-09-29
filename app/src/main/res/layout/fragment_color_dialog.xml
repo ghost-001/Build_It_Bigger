@@ -27,8 +27,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="@string/yellow"
-            android:textColor="#c7cc00"
+            android:text="@string/grey"
+            android:textColor="#424242"
             android:textSize="24sp" />
 
         <ImageView
@@ -39,7 +39,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerInParent="true"
             android:layout_margin="5dp"
-            android:src="@drawable/ic_color1" />
+            android:src="@drawable/ic_color4" />
     </RelativeLayout>
 
     <View

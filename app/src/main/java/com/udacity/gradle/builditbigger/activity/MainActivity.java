@@ -11,11 +11,11 @@ import android.view.MenuItem;
 import com.udacity.gradle.builditbigger.R;
 import com.udacity.gradle.builditbigger.colorDialog.colorDialog;
 
-import static com.udacity.gradle.builditbigger.appConstant.AppConstants.BLUE;
 import static com.udacity.gradle.builditbigger.appConstant.AppConstants.COLOR;
+import static com.udacity.gradle.builditbigger.appConstant.AppConstants.GREEN;
+import static com.udacity.gradle.builditbigger.appConstant.AppConstants.GREY;
 import static com.udacity.gradle.builditbigger.appConstant.AppConstants.PREFERENCEKEY;
 import static com.udacity.gradle.builditbigger.appConstant.AppConstants.PURPLE;
-import static com.udacity.gradle.builditbigger.appConstant.AppConstants.YELLOW;
 
 
 public class MainActivity extends AppCompatActivity implements colorDialog.OnFragmentInteractionListener {
@@ -30,19 +30,19 @@ public class MainActivity extends AppCompatActivity implements colorDialog.OnFra
         SharedPreferences prefs = getApplicationContext().getSharedPreferences(PREFERENCEKEY, MODE_PRIVATE);
         String getColor = prefs.getString(COLOR, null);
         if (getColor != null) {
-            String color = prefs.getString(COLOR, PURPLE);
+            String color = prefs.getString(COLOR, GREY);
             switch (color) {
                 case PURPLE:
                     currentColor = color;
+                    setTheme(R.style.CustomPurpleAppTheme);
+                    break;
+                case GREEN:
+                    currentColor = color;
+                    setTheme(R.style.CustomGreenAppTheme);
+                    break;
+                case GREY:
+                    currentColor = color;
                     setTheme(R.style.AppTheme);
-                    break;
-                case YELLOW:
-                    currentColor = color;
-                    setTheme(R.style.CustomYellowAppTheme);
-                    break;
-                case BLUE:
-                    currentColor = color;
-                    setTheme(R.style.CustomBlueAppTheme);
                     break;
             }
         }
@@ -79,20 +79,10 @@ public class MainActivity extends AppCompatActivity implements colorDialog.OnFra
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         switch (color) {
-            case YELLOW:
+            case GREEN:
                 if (!color.equals(currentColor)) {
                     editor = pf.edit();
-                    editor.clear();
-                    editor.putString(COLOR, YELLOW);
-                    editor.apply();
-                    startActivity(i);
-                }
-                break;
-
-            case BLUE:
-                if (!color.equals(currentColor)) {
-                    editor = pf.edit();
-                    editor.putString(COLOR, BLUE);
+                    editor.putString(COLOR, GREEN);
                     editor.apply();
                     startActivity(i);
                 }
@@ -101,6 +91,14 @@ public class MainActivity extends AppCompatActivity implements colorDialog.OnFra
                 if (!color.equals(currentColor)) {
                     editor = pf.edit();
                     editor.putString(COLOR, PURPLE);
+                    editor.apply();
+                    startActivity(i);
+                }
+                break;
+            case GREY:
+                if (!color.equals(currentColor)) {
+                    editor = pf.edit();
+                    editor.putString(COLOR, GREY);
                     editor.apply();
                     startActivity(i);
                 }

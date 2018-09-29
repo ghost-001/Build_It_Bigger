@@ -9,8 +9,8 @@
     <string name="select_color">Select Color</string>
     <string name="prefrence_key">PreferenceKey</string>
     <string name="purple">Purple</string>
-    <string name="yellow">Yellow</string>
     <string name="green">Green</string>
+    <string name="grey">Grey</string>
 
 
 </resources>

@@ -17,8 +17,6 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/imageView_height"
         android:scaleType="fitXY"
-        android:layout_margin="@dimen/imageView_margin"
-        android:padding="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

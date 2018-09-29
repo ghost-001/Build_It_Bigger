@@ -9,6 +9,7 @@ import android.speech.tts.TextToSpeech;
 import android.support.v4.app.ShareCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,19 +22,21 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+import com.example.androiddisplaylib.libConstants.libConstants;
 
 import java.util.Locale;
+import java.util.Random;
 
 import static android.view.View.GONE;
-import static com.example.androiddisplaylib.libConstants.libConstants.BLUE;
 import static com.example.androiddisplaylib.libConstants.libConstants.COLOR;
 import static com.example.androiddisplaylib.libConstants.libConstants.ERROR;
 import static com.example.androiddisplaylib.libConstants.libConstants.FAILED;
+import static com.example.androiddisplaylib.libConstants.libConstants.GREEN;
+import static com.example.androiddisplaylib.libConstants.libConstants.GREY;
 import static com.example.androiddisplaylib.libConstants.libConstants.JOKE;
 import static com.example.androiddisplaylib.libConstants.libConstants.LANGUAGE_NOT_SUPPORTED;
 import static com.example.androiddisplaylib.libConstants.libConstants.PREFERENCEKEY;
 import static com.example.androiddisplaylib.libConstants.libConstants.PURPLE;
-import static com.example.androiddisplaylib.libConstants.libConstants.YELLOW;
 
 public class MainActivityLib extends AppCompatActivity {
     TextView jokeTv;
@@ -49,17 +52,18 @@ public class MainActivityLib extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SharedPreferences prefs = getApplicationContext().getSharedPreferences(PREFERENCEKEY, MODE_PRIVATE);
-        String color = prefs.getString(COLOR, PURPLE);
+        String color = prefs.getString(COLOR, GREY);
         switch (color) {
             case PURPLE:
+                setTheme(R.style.CustomPurpleAppTheme);
+                break;
+            case GREEN:
+                setTheme(R.style.CustomGreenAppTheme);
+                break;
+            case GREY:
                 setTheme(R.style.AppTheme);
                 break;
-            case YELLOW:
-                setTheme(R.style.CustomYellowAppTheme);
-                break;
-            case BLUE:
-                setTheme(R.style.CustomBlueAppTheme);
-                break;
+
 
         }
         setContentView(R.layout.activity_main_lib);
@@ -68,8 +72,11 @@ public class MainActivityLib extends AppCompatActivity {
         jokeCard = findViewById(R.id.cardView);
         jokeButton = findViewById(R.id.lib_joke_button);
 
+        final int min = 0;
+        final int max = 3;
+        final int randomIndex = new Random().nextInt(max - min) + min;
 
-        Glide.with(this).load(R.drawable.smiley).into(imageView);
+        Glide.with(this).load(libConstants.images[randomIndex]).into(imageView);
         Intent intent = getIntent();
         joke = intent.getStringExtra(JOKE);
 
@@ -85,6 +92,7 @@ public class MainActivityLib extends AppCompatActivity {
 
         }
 
+        handleAnimation(jokeCard);
         if (checkJoke) {
             setTextToSpeech();
             jokeButton.setOnClickListener(new View.OnClickListener() {
@@ -105,7 +113,7 @@ public class MainActivityLib extends AppCompatActivity {
                 .playOn(view);
         YoYo.with(Techniques.Bounce)
                 .duration(700)
-                .repeat(4)
+                .repeat(5)
                 .playOn(view);
 
     }
@@ -119,9 +127,9 @@ public class MainActivityLib extends AppCompatActivity {
                         int result = textToSpeech.setLanguage(Locale.ENGLISH);
                         if (result == TextToSpeech.LANG_MISSING_DATA
                                 || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                            Toast.makeText(getApplicationContext(), LANGUAGE_NOT_SUPPORTED, Toast.LENGTH_SHORT).show();
+                            Log.i(libConstants.TAG, LANGUAGE_NOT_SUPPORTED);
                         } else {
-                            textToSpeech.setPitch(0.6f);
+                            textToSpeech.setPitch(1.0f);
                             textToSpeech.setSpeechRate(1.0f);
                         }
 
@@ -148,7 +156,7 @@ public class MainActivityLib extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_search) {
+        if (item.getItemId() == R.id.action_share) {
             if (checkJoke) {
                 startActivity(Intent.createChooser(ShareCompat.IntentBuilder.from(MainActivityLib.this)
                         .setType("text/plain")
