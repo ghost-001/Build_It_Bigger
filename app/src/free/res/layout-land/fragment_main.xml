@@ -1,0 +1,124 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/colorPrimaryDark"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/layout_margin"
+            android:text="@string/welcome_to_free_version_of_app"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            ads:layout_constraintEnd_toEndOf="parent"
+            ads:layout_constraintStart_toStartOf="parent"
+            ads:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/instructions_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv1"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/layout_margin"
+            android:text="@string/instructions"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="16sp"
+            ads:layout_constraintEnd_toEndOf="parent"
+            ads:layout_constraintStart_toStartOf="parent"
+            ads:layout_constraintTop_toBottomOf="@+id/tv1" />
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardView_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            ads:cardCornerRadius="25dp"
+            ads:layout_constraintBottom_toBottomOf="parent"
+            ads:layout_constraintStart_toStartOf="parent"
+            ads:layout_constraintTop_toBottomOf="@+id/instructions_text_view">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_cardview_round">
+
+                <ImageView
+
+                    android:id="@+id/joke_welcome_image"
+                    android:layout_width="292dp"
+                    android:layout_height="@dimen/image_height"
+                    android:layout_margin="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:padding="8dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/welcome1" />
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <Button
+            android:id="@+id/joke_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="@dimen/layout_margin"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="84dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="84dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/button_bg"
+            android:padding="15dp"
+            android:text="@string/button_text"
+            ads:layout_constraintBottom_toTopOf="@+id/adView"
+            ads:layout_constraintEnd_toEndOf="parent"
+            ads:layout_constraintStart_toEndOf="@+id/cardView_image"
+            ads:layout_constraintTop_toBottomOf="@+id/instructions_text_view" />
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/layout_margin"
+            android:layout_marginBottom="88dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/banner_ad_unit_id"
+            ads:layout_constraintBottom_toBottomOf="parent"
+            ads:layout_constraintEnd_toEndOf="parent"
+            ads:layout_constraintStart_toEndOf="@+id/cardView_image" />
+
+        <ProgressBar
+            android:id="@+id/joke_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="61dp"
+            android:layout_below="@id/joke_button"
+            android:layout_centerInParent="true"
+            android:layout_margin="@dimen/layout_margin"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:visibility="gone"
+            ads:layout_constraintBottom_toTopOf="@+id/adView"
+            ads:layout_constraintEnd_toEndOf="parent"
+            ads:layout_constraintStart_toEndOf="@+id/cardView_image"
+            ads:layout_constraintTop_toBottomOf="@+id/joke_button" />
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

@@ -30,6 +30,7 @@
         android:layout_centerHorizontal="true"
         android:layout_margin="@dimen/layout_margin"
         android:text="@string/instructions"
+        android:textColor="@android:color/darker_gray"
         ads:layout_constraintEnd_toEndOf="parent"
         ads:layout_constraintStart_toStartOf="parent"
         ads:layout_constraintTop_toBottomOf="@+id/tv1" />

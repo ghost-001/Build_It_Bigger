@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.app.ShareCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -92,7 +93,16 @@ public class MainActivityLib extends AppCompatActivity {
 
         }
 
-        handleAnimation(jokeCard);
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                jokeCard.setVisibility(View.VISIBLE);
+                if (checkJoke)
+                    handleCardAnimation(jokeCard);
+            }
+        }, 700);
+
         if (checkJoke) {
             setTextToSpeech();
             jokeButton.setOnClickListener(new View.OnClickListener() {
@@ -108,12 +118,24 @@ public class MainActivityLib extends AppCompatActivity {
 
     public void handleAnimation(View view) {
         YoYo.with(Techniques.FadeIn)
-                .duration(700)
+                .duration(500)
                 .repeat(1)
                 .playOn(view);
         YoYo.with(Techniques.Bounce)
+                .duration(500)
+                .repeat(3)
+                .playOn(view);
+
+    }
+
+    public void handleCardAnimation(View view) {
+        YoYo.with(Techniques.FadeIn)
                 .duration(700)
-                .repeat(5)
+                .repeat(1)
+                .playOn(view);
+        YoYo.with(Techniques.Pulse)
+                .duration(700)
+                .repeat(2)
                 .playOn(view);
 
     }
