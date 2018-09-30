@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="1"
-        android:textColor="@android:color/white"
-        android:textSize="30sp" />
+    android:layout_height="match_parent"
+    android:background="@drawable/intro1">
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:text="@string/jokes_app"
+    android:textAlignment="center"
+    android:textSize="28sp"
+    android:textColor="@android:color/white"
+    android:textStyle="bold"
+    android:background="@android:color/black"
+    android:layout_alignParentBottom="true"/>
 </RelativeLayout>
