@@ -15,7 +15,6 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         final SharedPreferences sharedPreference = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         Boolean isFirstLaunch = sharedPreference.getBoolean(FIRST_LAUNCH, true);
         if (isFirstLaunch) {
